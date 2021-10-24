@@ -3,9 +3,11 @@ package com.neppplus.colosseum_211024
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_211024.databinding.ActivityMainBinding
 import com.neppplus.colosseum_211024.utils.ServerUtil
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +28,27 @@ class MainActivity : AppCompatActivity() {
             Log.d("입력비번",inputPw)
 
 //            서버의 로그인 기능에 전달
-            ServerUtil.postRequestLogin(inputEmail,inputPw)
+            ServerUtil.postRequestLogin(inputEmail,inputPw,object : ServerUtil.JsonResponseHandler{
+                override fun onResponse(jsonObj: JSONObject) {
+                    
+//                    화면단에서 jsonObj 분석 > 상황에 맞는 UI처리
+                    val code = jsonObj.getInt("code")
+                    
+//                    로그인 성공시 > 성공토스트
+//                    실패 시 > 왜 실패했는지 알려주는대로 토스트
+                    
+                    if(code == 200){
+                        runOnUiThread {
+                            Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+                    else{
+
+                    }
+                }
+
+            })
 
         }
 
