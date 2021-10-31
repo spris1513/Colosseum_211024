@@ -86,7 +86,7 @@ class ServerUtil {
         }
 
 //        회원가입기능
-        fun putRequestSignUp(email:String,pw:String,nickname:String,handler: JsonResponseHandler? ){
+        fun putRequestSignUp(email:String, pw:String, nickname:String, handler: JsonResponseHandler? ){
             val urlString = "${BASE_URL}/user"
 
             val formData = FormBody.Builder()
