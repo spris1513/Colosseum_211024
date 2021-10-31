@@ -83,6 +83,8 @@ class SignUpActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
+//            도전과제. 구글링 필요. > 입력한 이메일이, 이메일 양식이 맞는지? aaa@nepp.kr 등
+//            정규 표현식 활용 > 이메일 양식 검증 정규표현식
 
 
 //            입력 데이터를 > 서버에 회원가입 기능에 요청 > ServerUtil 함수 활용 > 함수가 아직 없으니 추가로 만들자
