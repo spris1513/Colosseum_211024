@@ -2,7 +2,9 @@ package com.neppplus.colosseum_211024
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_211024.databinding.ActivitySignUpBinding
 import com.neppplus.colosseum_211024.utils.ServerUtil
@@ -11,6 +13,10 @@ import org.json.JSONObject
 class SignUpActivity : BaseActivity() {
 
     lateinit var binding : ActivitySignUpBinding
+
+//    이메일 중복 검사 통과 여부 저장 변수
+    var isEmailOk = false // 기본값 : 통과 X, 그래서 false > 자료형 자동으로 불린
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_up)
@@ -18,6 +24,18 @@ class SignUpActivity : BaseActivity() {
         setValues()
     }
     override fun setupEvents() {
+
+        binding.emailEdt.addTextChangedListener {
+
+//            val inputContext = it.toString()
+//            Log.d("변경된 내용",inputContext)
+
+//            이메일이 한글자라도 바뀌면 > 검사를 다시 요구
+            binding.emailCheckResultTxt.text = "이메일 중복 검사를 해주세요."
+            isEmailOk = false
+
+
+        }
 
         binding.checkEmailBtn.setOnClickListener {
 
@@ -30,9 +48,11 @@ class SignUpActivity : BaseActivity() {
                     runOnUiThread {
                         if(code==200){
                             binding.emailCheckResultTxt.text="사용해도 좋습니다."
+                            isEmailOk = true
                         }
                         else{
                             binding.emailCheckResultTxt.text = "다른 이메일을 입력하고, 다시 검사해주세요"
+                            isEmailOk = false
                         }
 
                     }
