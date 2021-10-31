@@ -14,7 +14,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         setupEvents()
-        setupEvents()
+        setValues()
     }
     override fun setupEvents() {
 

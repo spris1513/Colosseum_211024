@@ -16,6 +16,7 @@ class SignUpActivity : BaseActivity() {
 
 //    이메일 중복 검사 통과 여부 저장 변수
     var isEmailOk = false // 기본값 : 통과 X, 그래서 false > 자료형 자동으로 불린
+    var isNicknameOk = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,29 @@ class SignUpActivity : BaseActivity() {
         setValues()
     }
     override fun setupEvents() {
+
+        binding.nicknameCheckBtn.setOnClickListener {
+
+            val inputNickname = binding.nicknameEdt.text.toString()
+            ServerUtil.getRequestDuplCheck("NICK_NAME",inputNickname,object : ServerUtil.JsonResponseHandler{
+                override fun onResponse(jsonObj: JSONObject) {
+                    val code = jsonObj.getInt("code")
+
+                    runOnUiThread {
+                        if(code == 200){
+                            binding.nicknameCheckResultTxt.text= "사용해도 좋습니다."
+                            isNicknameOk = true
+                        }
+                        else{
+                            binding.nicknameCheckResultTxt.text= "중복된 닉네임이 있습니다."
+                            isNicknameOk = false
+                        }
+
+                    }
+                }
+            })
+
+        }
 
         binding.emailEdt.addTextChangedListener {
 
@@ -80,6 +104,10 @@ class SignUpActivity : BaseActivity() {
 //            입력한 비번이 8글자 이상인가? 검증
             if(inputPw.length < 8){
                 Toast.makeText(mContext, "비밀번호는 8글자 이상으로 해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if(!isNicknameOk){
+                Toast.makeText(mContext, "닉네임을 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
