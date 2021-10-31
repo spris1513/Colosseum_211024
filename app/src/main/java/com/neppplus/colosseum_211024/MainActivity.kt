@@ -1,9 +1,9 @@
 package com.neppplus.colosseum_211024
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_211024.databinding.ActivityMainBinding
+import com.neppplus.colosseum_211024.utils.ServerUtil
 
 class MainActivity : BaseActivity() {
 
@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
 
 //        연습 - 내 정보 받아오기 호출 => 닉네임 파싱, 텍스트뷰에 반영영
 
-
+        ServerUtil.getRequestMyInfo(mContext,null)
     }
 
 }
