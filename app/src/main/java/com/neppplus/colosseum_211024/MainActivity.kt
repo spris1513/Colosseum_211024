@@ -9,14 +9,12 @@ import com.neppplus.colosseum_211024.databinding.ActivityMainBinding
 import com.neppplus.colosseum_211024.utils.ServerUtil
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     lateinit var binding : ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
+    override fun setupEvents() {
         binding.loginBtn.setOnClickListener {
 
 //              입력한 이메일/비번을 데이터바인딩으로 가져오기.
@@ -30,13 +28,13 @@ class MainActivity : AppCompatActivity() {
 //            서버의 로그인 기능에 전달
             ServerUtil.postRequestLogin(inputEmail,inputPw,object : ServerUtil.JsonResponseHandler{
                 override fun onResponse(jsonObj: JSONObject) {
-                    
+
 //                    화면단에서 jsonObj 분석 > 상황에 맞는 UI처리
                     val code = jsonObj.getInt("code")
-                    
+
 //                    로그인 성공시 > 성공토스트
 //                    실패 시 > 왜 실패했는지 알려주는대로 토스트
-                    
+
                     if(code == 200){
                         runOnUiThread {
                             Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
@@ -59,7 +57,23 @@ class MainActivity : AppCompatActivity() {
             })
 
         }
+    }
+
+    override fun setValues() {
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        setupEvents()
+        setValues()
+
+
 
 
     }
+
+
+
 }
