@@ -23,6 +23,7 @@ class ServerUtil {
 //        이 { } 안에 적는 코드들은 다른 클래스에서 ServerUtil.변수/기능 활용 가능
 //        handler : 화면단에서 적어주는, 응답을 어떻게 처리할 지 대처 방안이 담긴 인터페이스 변수.
 
+//        로그인기능
         fun postRequestLogin(email: String, pw: String, handler : JsonResponseHandler? ) {
 
 //            1.어디로 요청하러 (인터넷 주소 연결 - URL) 갈 것인가??
@@ -77,6 +78,38 @@ class ServerUtil {
 
 
 
+                }
+
+            })
+
+        }
+
+//        회원가입기능
+        fun putRequestSignUp(email:String,pw:String,nickname:String,handler: JsonResponseHandler? ){
+            val urlString = "${BASE_URL}/user"
+
+            val formData = FormBody.Builder()
+                .add("email" , email)
+                .add("password" , pw)
+                .add("nick_name" , nickname)
+                .build()
+
+            val request = Request.Builder()
+                .url(urlString)
+                .put(formData)
+                .build()
+
+            val client = OkHttpClient()
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val bodyString = response.body!!.string()
+                    val jsonObj = JSONObject(bodyString)
+                    Log.d("서버응답본문",jsonObj.toString())
+                    handler?.onResponse(jsonObj)
                 }
 
             })
