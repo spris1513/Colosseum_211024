@@ -12,7 +12,12 @@ import org.json.JSONObject
 class MainActivity : BaseActivity() {
 
     lateinit var binding : ActivityMainBinding
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        setupEvents()
+        setValues()
+    }
 
     override fun setupEvents() {
         binding.loginBtn.setOnClickListener {
@@ -37,7 +42,7 @@ class MainActivity : BaseActivity() {
 
                     if(code == 200){
                         runOnUiThread {
-                            Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
                         }
 
                     }
@@ -47,7 +52,7 @@ class MainActivity : BaseActivity() {
                         val message = jsonObj.getString("message")
 
                         runOnUiThread {
-                            Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
                         }
 
 
@@ -63,16 +68,7 @@ class MainActivity : BaseActivity() {
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        setupEvents()
-        setValues()
 
-
-
-
-    }
 
 
 
