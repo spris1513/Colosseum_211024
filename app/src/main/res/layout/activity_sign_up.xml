@@ -20,6 +20,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/emailEdt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -45,12 +46,14 @@
             android:layout_marginTop="25dp"/>
 
         <EditText
+            android:id="@+id/pwEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="8글자 이상 입력"/>
 
         <TextView
+            android:id="@+id/nicknameEdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="닉네임"
@@ -63,6 +66,7 @@
             android:singleLine="true"/>
 
         <Button
+            android:id="@+id/okBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="회원가입 하기" />
