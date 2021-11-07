@@ -3,6 +3,7 @@ package com.neppplus.colosseum_211024
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.neppplus.colosseum_211024.databinding.ActivityViewTopicDetailBinding
 import com.neppplus.colosseum_211024.datas.TopicData
 
@@ -25,6 +26,9 @@ class ViewTopicDetailActivity : BaseActivity() {
 
     override fun setValues() {
         mTopicData = intent.getSerializableExtra("topic") as TopicData
+
+        binding.topicTitleTxt.text = mTopicData.title
+        Glide.with(mContext).load(mTopicData.imageUrl).into(binding.topicImg)
 
     }
 
