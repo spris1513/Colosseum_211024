@@ -1,6 +1,7 @@
 package com.neppplus.colosseum_211024
 
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_211024.databinding.ActivityMainBinding
 import com.neppplus.colosseum_211024.datas.TopicData
@@ -25,33 +26,37 @@ class MainActivity : BaseActivity() {
 
     override fun setValues() {
 
-//        연습 - 내 정보 받아오기 호출 => 닉네임 파싱, 텍스트뷰에 반영영
-
-//        ServerUtil.getRequestMyInfo(mContext,object:ServerUtil.JsonResponseHandler{
-//            override fun onResponse(jsonObj: JSONObject) {
-//                val dataObj = jsonObj.getJSONObject("data")
-//                val userObj = dataObj.getJSONObject("user")
-//                val nickname = userObj.getString("nick_name")
-//
-//                binding.nicknameTxt.text = nickname
-//            }
-//
-//        })
-
-
 //        /v2/main_info API 가 토론 주제 목록을 내려줌
 //        서버 호출 > 파싱해서 mTopicList 를 채워주자
-        fun getTopicListFromServer(){
+        getTopicListFromServer()
+    }
+    fun getTopicListFromServer(){
+        ServerUtil.getRequestMainInfo(mContext,object : ServerUtil.JsonResponseHandler{
+            override fun onResponse(jsonObj: JSONObject) {
 
-            ServerUtil.getRequestMainInfo(mContext,object : ServerUtil.JsonResponseHandler{
-                override fun onResponse(jsonObj: JSONObject) {
+                val dataObj = jsonObj.getJSONObject("data")
+                val topicArr = dataObj.getJSONObject("topics")
 
+//                0번째 주제 ~ topicArr 갯수 직전까지를 반복.
+//                5개 주제: 0~4 번 주제까지 (5개)
+
+                for ( index in 0 utill topicArr.length()){
+
+//                    [  ] 안에 있는  {  } 를 순서대로 찾아내서 파싱하자
+
+                    val topicObj = topicArr.getJSONObject(index)
+
+//                  topicObj는 토론 주제에 필요한 데이터를 들고있다.
+//                  TopicData() 형태로 변환해주자 > 목록에 추가해주자
+
+                    val
                 }
-            })
 
-        }
 
+            }
+        })
 
     }
+
 
 }
