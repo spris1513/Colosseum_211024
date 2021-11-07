@@ -273,7 +273,7 @@ class ServerUtil {
             val urlString = "${BASE_URL}/topic_vote"
 
             val formData = FormBody.Builder()
-                .add(sideId.toString())
+                .add("side_id", toString())
                 .build()
 
             val request = Request.Builder()

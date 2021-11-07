@@ -102,6 +102,11 @@ class ViewTopicDetailActivity : BaseActivity() {
 
 
                 val repliesArr = topicObj.getJSONArray("replies")
+
+//                mReplyList 에 이미 데이터가 들어있는 상태로 추가 > 같은 데이터 여러번추가(중복)
+//                기존 들어간 댓글 목록 삭제 후 add
+
+                mReplyList.clear()
                 
                 for ( i in 0 until repliesArr.length() ) {
                     
