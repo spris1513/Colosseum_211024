@@ -78,22 +78,27 @@ class MainActivity : BaseActivity() {
 
         mTopicAdapter = TopicAdapter(mContext,R.layout.topic_list_item,mTopicList)
         binding.topicListView.adapter = mTopicAdapter
+
+
     }
-    fun getTopicListFromServer(){
-        ServerUtil.getRequestMainInfo(mContext,object : ServerUtil.JsonResponseHandler{
+
+    fun getTopicListFromServer() {
+
+        ServerUtil.getRequestMainInfo(mContext,object : ServerUtil.JsonResponseHandler {
             override fun onResponse(jsonObj: JSONObject) {
 
                 val dataObj = jsonObj.getJSONObject("data")
-                val topicsArr = dataObj.getJSONObject("topics")
+                val topicsArr = dataObj.getJSONArray("topics")
 
 //                0번째 주제 ~ topicArr 갯수 직전까지를 반복.
 //                5개 주제: 0~4 번 주제까지 (5개)
 
-                for ( index in 0 until topicsArr.length() ) {
+                for ( index in 0 until topicsArr.length() ){
+
 
 //                    [  ] 안에 있는  {  } 를 순서대로 찾아내서 파싱하자
+                    val topicObj = topicsArr.getJSONObject( index )
 
-                    val topicObj = topicsArr.getJSONObject(index.toString())
 
 //                  topicObj는 토론 주제에 필요한 데이터를 들고있다.
 //                  TopicData() 형태로 변환해주자 > 목록에 추가해주자
@@ -105,6 +110,7 @@ class MainActivity : BaseActivity() {
 
 //                    만들어진 topicData를 목록에 추가
                     mTopicList.add(topicData)
+
                 }
 
 //                for문의 끝나면, mTopicList에 모든 토론 주제가 추가된 상태다.

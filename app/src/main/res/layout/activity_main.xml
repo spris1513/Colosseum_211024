@@ -18,10 +18,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/logoutBtn"/>
-
-
-
+            android:id="@+id/logoutBtn"
+            android:text="로그아웃"/>
 
     </LinearLayout>
 </layout>
