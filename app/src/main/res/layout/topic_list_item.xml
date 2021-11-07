@@ -20,14 +20,66 @@
             android:layout_height="match_parent"
             android:background="#80000000"/>
 
-        <TextView
-            android:layout_gravity="center"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="토론주자 제목 자리"
-            android:id="@+id/topicTitleTxt"
-            android:textSize="20sp"/>
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="토론주자 제목 자리"
+                android:id="@+id/topicTitleTxt"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="현재 의견 : 4개"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:id="@+id/replyCountTxt"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="첫 진영"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:id="@+id/firstSideTitleTxt"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vs."
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="두번째 진영"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:id="@+id/secondSideTitleTxt"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </FrameLayout>
 

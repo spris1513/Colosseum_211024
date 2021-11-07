@@ -8,6 +8,9 @@ class TopicData (
     var title : String,
     var imageUrl : String) : Serializable {
 
+//    선택 진영 목록도 멤버변수로 추가
+    val
+
 //      토픽데이터 만들때는 빈 괄호 TopicData() 형태도 지원하자
 //    다른 형태의 생성자(보조 생성자)도 추가 지원.
 
