@@ -103,10 +103,7 @@ class MainActivity : BaseActivity() {
 //                  topicObj는 토론 주제에 필요한 데이터를 들고있다.
 //                  TopicData() 형태로 변환해주자 > 목록에 추가해주자
 
-                    val topicData = TopicData()
-                    topicData.id = topicObj.getInt("id")
-                    topicData.title = topicObj.getString("title")
-                    topicData.imageUrl = topicObj.getString("img_url")
+                    val topicData = TopicData.getTopicDataFromJSON(topicObj)
 
 //                    만들어진 topicData를 목록에 추가
                     mTopicList.add(topicData)
