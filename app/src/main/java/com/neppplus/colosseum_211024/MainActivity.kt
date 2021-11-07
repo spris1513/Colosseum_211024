@@ -1,7 +1,9 @@
 package com.neppplus.colosseum_211024
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_211024.adapters.TopicAdapter
 import com.neppplus.colosseum_211024.databinding.ActivityMainBinding
@@ -24,6 +26,23 @@ class MainActivity : BaseActivity() {
         setValues()
     }
     override fun setupEvents() {
+
+        binding.logoutBtn.setOnClickListener {
+
+//            로그아웃 구현 > 진짜 로그아웃할거니??
+            val alert = AlertDialog.Builder(mContext)
+            alert.setTitle("로그아웃")
+            alert.setMessage("정말 로그아웃 하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+
+//                확인 눌리면 할 일
+
+            })
+            alert.setNegativeButton("취소",null)
+            alert.show()
+
+
+        }
 
     }
 
