@@ -46,7 +46,7 @@ class MainActivity : BaseActivity() {
 //                0번째 주제 ~ topicArr 갯수 직전까지를 반복.
 //                5개 주제: 0~4 번 주제까지 (5개)
 
-                for ( index in 0 utill topicArr.length()){
+                for ( index in 0 until topicArr.length()){
 
 //                    [  ] 안에 있는  {  } 를 순서대로 찾아내서 파싱하자
 
@@ -65,6 +65,11 @@ class MainActivity : BaseActivity() {
                 }
 
 //                for문의 끝나면, mTopicList에 모든 토론 주제가 추가된 상태다.
+//                어댑터가 변경사항을 감지하도록 처리하자 > 내용반영: UI변경(백그라운드)
+
+                runOnUiThread {
+                    mTopicAdapter.notifyDataSetChanged()
+                }
 
 
             }
