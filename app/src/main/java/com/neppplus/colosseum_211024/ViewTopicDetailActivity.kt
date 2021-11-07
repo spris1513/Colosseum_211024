@@ -35,6 +35,27 @@ class ViewTopicDetailActivity : BaseActivity() {
 
 //            첫번째 진영에 투표 > 새로 투표 현황 받아서 > UI반영
 
+            ServerUtil.postRequestVote(mContext,mTopicData.sideList[0].id,object :ServerUtil.JsonResponseHandler{
+                override fun onResponse(jsonObj: JSONObject) {
+
+//                    새로 토론 상태 불러오기
+                    getTopicDetailFromServer()
+                }
+
+            })
+
+        }
+
+        binding.voteToSecondSideBtn.setOnClickListener {
+
+            ServerUtil.postRequestVote(mContext,mTopicData.sideList[1].id,object : ServerUtil.JsonResponseHandler{
+                override fun onResponse(jsonObj: JSONObject) {
+
+//                    새로 토론 상태 불러오기
+                    getTopicDetailFromServer()
+                }
+
+            })
         }
 
     }
@@ -74,6 +95,11 @@ class ViewTopicDetailActivity : BaseActivity() {
 //                topicObj(JSONObject)를 새 TopicData 로 파싱 > 최신정보 반영
 
                 mTopicData = TopicData.getTopicDataFromJSON(topicObj)
+//                새 mTopicData 에 들어있는 데이터를 UI에 다시 반영
+                runOnUiThread {
+                    refreshUi()
+                }
+
 
                 val repliesArr = topicObj.getJSONArray("replies")
                 
@@ -101,6 +127,15 @@ class ViewTopicDetailActivity : BaseActivity() {
         })
 
     }
+
+    fun refreshUi() {
+
+//        득표 수 등은 자주 변경되는 데이터.
+        binding.firstSideVoteCountTxt.text = "${mTopicData.sideList[0].voteCount}표"
+        binding.secondSideVoteCountTxt.text = "${mTopicData.sideList[1].voteCount}표"
+
+    }
+
 
 
 }
