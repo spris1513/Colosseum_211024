@@ -42,6 +42,10 @@ class ViewTopicDetailActivity : BaseActivity() {
 
         binding.replyCountTxt.text = "현재 의견 : ${mTopicData.replyCount}개"
 
+        binding.firstSideTitleTxt.text = mTopicData.sideList[0].title
+        binding.secondSideTitleTxt.text = mTopicData.sideList[1].title
+
+
         getTopicDetailFromServer()
 
         mReplyAdapter = ReplyAdapter(mContext, R.layout.reply_list_item,mReplyList)
