@@ -41,16 +41,16 @@ class MainActivity : BaseActivity() {
             override fun onResponse(jsonObj: JSONObject) {
 
                 val dataObj = jsonObj.getJSONObject("data")
-                val topicArr = dataObj.getJSONObject("topics")
+                val topicsArr = dataObj.getJSONObject("topics")
 
 //                0번째 주제 ~ topicArr 갯수 직전까지를 반복.
 //                5개 주제: 0~4 번 주제까지 (5개)
 
-                for ( index in 0 until topicArr.length()){
+                for ( index in 0 until topicsArr.length() ) {
 
 //                    [  ] 안에 있는  {  } 를 순서대로 찾아내서 파싱하자
 
-                    val topicObj = topicArr.getJSONObject(index)
+                    val topicObj = topicsArr.getJSONObject(index)
 
 //                  topicObj는 토론 주제에 필요한 데이터를 들고있다.
 //                  TopicData() 형태로 변환해주자 > 목록에 추가해주자

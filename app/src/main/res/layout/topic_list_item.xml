@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="토론주자 제목 자리"
             android:id="@+id/topicTitleTxt"
-            android:textSize="30sp"/>
+            android:textSize="20sp"/>
 
     </FrameLayout>
 
