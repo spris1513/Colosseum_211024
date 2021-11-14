@@ -1,10 +1,12 @@
 package com.neppplus.colosseum_211024
 
+import android.app.ActionBar
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_211024.adapters.TopicAdapter

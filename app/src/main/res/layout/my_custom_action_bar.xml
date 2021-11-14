@@ -10,6 +10,6 @@
         android:text="Colosseum"
         android:textColor="@color/white"
         android:layout_gravity="center"
-        android:textSize="17sp"
+        android:textSize="17sp"/>
 
 </FrameLayout>
