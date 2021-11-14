@@ -2,8 +2,9 @@ package com.neppplus.colosseum_211024.datas
 
 import com.neppplus.colosseum_211024.utils.ServerUtil
 import org.json.JSONObject
+import java.io.Serializable
 
-class UserData {
+class UserData : Serializable {
 
     var id = 0 // int 가 들어올거라는 명시
     var email = "" // String이 들어올거라는 명시
