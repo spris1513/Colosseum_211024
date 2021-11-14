@@ -46,6 +46,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/replyCountTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="답글 0개"/>
@@ -56,11 +57,13 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/likeCountTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="좋아요 0개"/>
 
         <TextView
+            android:id="@+id/disLikeCountTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="싫어요 0개"/>
