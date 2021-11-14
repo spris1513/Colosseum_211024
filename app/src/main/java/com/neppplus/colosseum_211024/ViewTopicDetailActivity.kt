@@ -3,6 +3,7 @@ package com.neppplus.colosseum_211024
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
@@ -34,6 +35,12 @@ class ViewTopicDetailActivity : BaseActivity() {
 
 
         binding.addReplyBtn.setOnClickListener {
+
+            if(mTopicData.mySide == null){
+
+                Toast.makeText(mContext, "어느 진영이든, 투표를 해야 의견 작성이 가능합니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
 //            어느 진영을 옹호하는 댓글을 다는건지, 진영 정보를 댓글 작성 화면에 넘겨줘야함
 
