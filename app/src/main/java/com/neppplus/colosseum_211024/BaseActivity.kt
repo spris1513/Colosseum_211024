@@ -1,5 +1,7 @@
 package com.neppplus.colosseum_211024
 
+import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -7,6 +9,8 @@ import androidx.appcompat.widget.Toolbar
 abstract class BaseActivity : AppCompatActivity() {
 
     val mContext = this
+
+//    onCreate 의 내용을 수정해서 재정의해서 사용 > override
 
     abstract fun setupEvents()
     abstract fun setValues()
@@ -25,6 +29,19 @@ abstract class BaseActivity : AppCompatActivity() {
         val toolBar = defActionBar.customView.parent as Toolbar
         toolBar.setContentInsetsAbsolute(0,0)
 
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // 여기에 적는 코드? > 자식(다른화면)들의 super.onCreate > 실행되는 내용
+
+//        모든 화면이 만들어질때 > 액션바가 있다면 그때만 실행 > 액션바 커마기능 실행
+
+            supportActionBar?.let {
+                setCustomActionBar()
+            }
 
     }
 
