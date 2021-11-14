@@ -43,19 +43,24 @@ class ReplyAdapter(
         disLikeCountTxt.text = "싫어요 : ${data.disLikeCount}개"
 
 //        내가 좋아요 찍었는지? > 글씨 색 빨간색(#FF0000). 안찍었다면 회색(#A0A0A0)
+//        + 배경 빨간테두리 / 회색테두리 그때 상황에맞게 설정
         if (data.myLike) {
             likeCountTxt.setTextColor(mContext.resources.getColor(R.color.red))
+            likeCountTxt.setBackgroundResource(R.drawable.red_border_box)
         }
         else {
             likeCountTxt.setTextColor(mContext.resources.getColor(R.color.gray))
+            likeCountTxt.setBackgroundResource(R.drawable.gray_border_box)
         }
 
 //        싫어요 여부에 따른 텍스트 컬러 변경
         if(data.myDisLike){
             disLikeCountTxt.setTextColor(mContext.resources.getColor(R.color.blue))
+            disLikeCountTxt.setBackgroundResource(R.drawable.blue_border_box)
         }
         else {
             disLikeCountTxt.setTextColor(mContext.resources.getColor(R.color.gray))
+            disLikeCountTxt.setBackgroundResource(R.drawable.gray_border_box)
         }
 
         contentTxt.text = data.content
