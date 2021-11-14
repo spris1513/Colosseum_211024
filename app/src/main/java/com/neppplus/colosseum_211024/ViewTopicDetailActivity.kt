@@ -32,6 +32,7 @@ class ViewTopicDetailActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+
         binding.addReplyBtn.setOnClickListener {
 
 //            어느 진영을 옹호하는 댓글을 다는건지, 진영 정보를 댓글 작성 화면에 넘겨줘야함
