@@ -55,7 +55,7 @@ class ReplyAdapter(
             disLikeCountTxt.setTextColor(mContext.resources.getColor(R.color.blue))
         }
         else {
-            likeCountTxt.setTextColor(mContext.resources.getColor(R.color.gray))
+            disLikeCountTxt.setTextColor(mContext.resources.getColor(R.color.gray))
         }
 
         contentTxt.text = data.content
