@@ -38,6 +38,7 @@ class ReplyAdapter(
         val likeCountTxt = row.findViewById<TextView>(R.id.likeCountTxt)
         val disLikeCountTxt = row.findViewById<TextView>(R.id.disLikeCountTxt)
         val selectSideTxt = row.findViewById<TextView>(R.id.selectedSide)
+        val userNicknameTxt = row.findViewById<TextView>(R.id.userNicknameTxt)
 
         replyCountTxt.text = "답글 : ${data.replyCount}개"
         likeCountTxt.text = "좋아요 : ${data.likeCount}개"
@@ -68,6 +69,9 @@ class ReplyAdapter(
 
 //        선택진영 데이터 보여여주기
         selectSideTxt.text = "(${data.selectedSide.title})"
+
+//        작성자 닉네임 보여주기
+        userNicknameTxt.text = data.user.nickname
 
 
 //        좋아요 텍스트뷰 클릭 > 이 댓글에 대해 좋아요 누른걸로 호출
