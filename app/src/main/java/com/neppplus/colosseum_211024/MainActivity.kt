@@ -85,6 +85,7 @@ class MainActivity : BaseActivity() {
 
 //        부모 클래스인 BaseActivity가 backBtn를 숨김처리.
         backBtn.visibility = View.GONE
+        profileBtn.visibility = View.VISIBLE
 
 
     }

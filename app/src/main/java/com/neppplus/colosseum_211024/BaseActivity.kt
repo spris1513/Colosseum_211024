@@ -12,6 +12,7 @@ abstract class BaseActivity : AppCompatActivity() {
     val mContext = this
 
     lateinit var backBtn : ImageView
+    lateinit var profileBtn : ImageView
 
     abstract fun setupEvents()
     abstract fun setValues()
@@ -32,6 +33,12 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
         backBtn = defActionBar.customView.findViewById(R.id.backBtn)
+        profileBtn = defActionBar.customView.findViewById(R.id.profileBtn)
+
+        profileBtn.setOnClickListener {
+            //향후 작성 : 프로필 화면으로 진입
+
+        }
         backBtn.setOnClickListener {
 
             // 모든 화면에 백버튼은 기능이 동일
