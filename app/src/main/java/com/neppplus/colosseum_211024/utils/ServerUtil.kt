@@ -361,6 +361,46 @@ class ServerUtil {
 
         }
 
+        //특정 댓글 상세보기(대댓글 불러오기)
+
+        fun getRequestReplyDetail( context: Context, replyId:Int, handler: JsonResponseHandler? ) {
+
+            val urlBuilder = "${BASE_URL}/topic_reply".toHttpUrlOrNull()!!.newBuilder()
+
+//            Path 첨부 : /topic/3 양식 > 이름표작성 X.
+            urlBuilder.addPathSegment(replyId.toString())
+
+//            Query 첨부 : 주소 ? order_type=NEW 양식 > 이름표작성 O
+            //urlBuilder.addEncodedQueryParameter("order_type",orderType)
+
+//            urlBuilder.addEncodedQueryParameter() // 이 기능은 쿼리파라미터 첨부가 없음.
+
+            val urlString = urlBuilder.toString()
+
+            val request = Request.Builder()
+                .url(urlString)
+                .get()
+                .header("X-Http-Token",ContextUtil.getToken(context))
+                .build()
+
+            val client = OkHttpClient()
+            client.newCall(request).enqueue(object : Callback{
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val bodyString = response.body!!.string()
+                    val jsonObj = JSONObject(bodyString)
+                    Log.d("서버응답본문",jsonObj.toString())
+                    handler?.onResponse(jsonObj)
+                }
+
+
+            })
+
+        }
+
     }
 
 
